@@ -23,11 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c!3cy12$jtw@*=5at380%e4ryx_$ybyc1f=_4zuta))$_j3m%e'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'RDS_DB_NAME' in os.environ:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
 
-#ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
-ALLOWED_HOSTS = []
+    #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
+    ALLOWED_HOSTS = []
+else:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
+
+    #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
+    ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']    
 
 # Application definition
 
@@ -78,12 +85,24 @@ WSGI_APPLICATION = 'kiwipages.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+            'default': {
+                'ENGINE':'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ['RDS_DB_NAME'],
+                'USER': os.environ['RDS_USERNAME'],
+                'PASSWORD': os.environ['RDS_PASSWORD'],
+                'HOST': os.environ['RDS_HOSTNAME'],
+                'PORT': os.environ['RDS_PORT'],
+            }
+        }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 
 # Password validation
