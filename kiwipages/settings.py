@@ -23,20 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c!3cy12$jtw@*=5at380%e4ryx_$ybyc1f=_4zuta))$_j3m%e'
 
-if 'PYTHONPATH' in os.environ:
-    # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = False
 
-    #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
-    ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
-    print("DEBUG IS FALSE")
-else:
-    # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-    #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
-    ALLOWED_HOSTS = []
-    print("DEBUG IS TRUE")
+#ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
