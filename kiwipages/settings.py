@@ -29,12 +29,14 @@ if 'PYTHONPATH' in os.environ:
 
     #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
     ALLOWED_HOSTS = []
+    print("DEBUG FALSE")
 else:    
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
     #ALLOWED_HOSTS = ['django-env.eba-dtrievek.us-west-2.elasticbeanstalk.com']
     ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
+    print("DEBUG TRUE")
 
 # Application definition
 
@@ -48,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'kiwipages',
 ]
 
 MIDDLEWARE = [
