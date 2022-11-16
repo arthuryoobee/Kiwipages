@@ -151,7 +151,7 @@ STATICFILES_DIRS = [
         #'/var/www/static'
     ]
 #STATIC_ROOT = 'static'
-STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+STATIC_ROOT = 'www/static'
 
 STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
