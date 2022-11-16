@@ -174,7 +174,7 @@ if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
     STATIC_ROOT = 'static'
 '''
 
-AWS_STORAGE_BUCKET_NAME = 'django-kiwipages-bucket'
+AWS_STORAGE_BUCKET_NAME = 'kiwipages-bucket'
 AWS_S3_REGION_NAME = 'ap-southeast-2'
 
 AWS_S3_ACCESS_KEY_ID = 'AKIAWT2NGT2X64RYFS7Q'
